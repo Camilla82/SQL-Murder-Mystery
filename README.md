@@ -1,2 +1,2 @@
 # SQL-Murder-Mystery
-My repository dedicated to the SQL Murder Mystery from NUKnightLab
+My solution to the SQL Murder Mystery by NUKnightLab (https://github.com/NUKnightLab/sql-mysteries) 
