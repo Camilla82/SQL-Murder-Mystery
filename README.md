@@ -40,7 +40,7 @@ SELECT sql
 Considering the info I have been given ("crime was a ​murder​ that occurred sometime on ​Jan.15, 2018​ and that it took place in ​SQL City), I will start by interrogating the database 
 about the murder report: 
 
-```
+``` sql
 SELECT * 
 FROM crime_scene_report
 WHERE type = 'murder'
