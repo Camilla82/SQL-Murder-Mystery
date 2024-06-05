@@ -73,6 +73,7 @@ ORDER BY address_number DESC
 limit 1
 ;
 ```
+![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/670e12c8-8505-443b-b9af-6293ba70a12b)
 
 The name of the person living on the last house on Northwestern Dr is **"Morty Schapiro"**
 
@@ -88,6 +89,7 @@ WHERE name LIKE "Annabel%"
 AND address_street_name = "Franklin Ave"
 ;
 ```
+![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/ec6fd277-2bda-4cd7-b6aa-6ae434db7fe7)
 
 
 
