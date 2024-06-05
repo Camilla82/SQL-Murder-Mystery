@@ -1,1 +1,105 @@
+-- EXPLORING DATABASE STRUCTURE
 
+SELECT name 
+  FROM sqlite_master
+ where type = 'table'
+; 
+
+-- TABLE STRUCTURE - EXAMPLE
+
+SELECT sql 
+  FROM sqlite_master
+ where name = 'crime_scene_report'
+;
+
+-- MURDER REPORT 
+
+SELECT * 
+FROM crime_scene_report
+WHERE type = 'murder'
+AND city = 'SQL City'
+AND date = '20180115'
+;
+
+-- FIND WITNESS PERSONAL DETAILS
+
+-- First witness
+
+SELECT * 
+FROM person
+WHERE address_street_name = 'Northwestern Dr' 
+ORDER BY address_number DESC
+limit 1
+;
+
+-- Second witness
+
+SELECT*
+FROM person
+WHERE name LIKE "Annabel%"
+AND address_street_name = "Franklin Ave"
+;
+
+-- WITNESS INTERVIEWS
+
+SELECT*
+FROM interview
+WHERE person_id = 14887 -- witness 1
+OR person_id = 16371 -- witness 2
+;
+
+-- FIND YOUR SUSPECT
+
+SELECT check_in_time, check_out_time, name
+FROM get_fit_now_check_in AS gfnc
+JOIN get_fit_now_member AS gfnm
+ON gfnm.id = gfnc.membership_id
+WHERE  check_in_date = '20180109'
+AND name LIKE "Annabel%" 
+OR name LIKE "Jeremy%"
+;
+
+-- FINDING THE KILLER!
+
+SELECT check_in_time, check_out_time, name
+FROM get_fit_now_check_in AS gfnc
+JOIN get_fit_now_member AS gfnm
+ON gfnm.id = gfnc.membership_id
+WHERE  check_in_date = '20180109'
+AND name LIKE "Annabel%" 
+OR name LIKE "Jeremy%"
+;
+
+-- ONE STEP FURTHER... FIND THE REAL CULPRIT. 
+
+-- Read Jeremy's statement 
+
+SELECT person_id, transcript, id, name
+FROM interview
+JOIN person 
+ ON interview.person_id = person.id
+WHERE  
+ name LIKE "Jeremy Bowers"
+;  
+
+-- Find the real culprit
+
+SELECT dl.id, height, hair_color, gender, car_model, event_name, fc.date, p.name, p.ssn, annual_income
+FROM drivers_license AS dl
+JOIN person AS p
+ON p.license_id = dl.id
+JOIN facebook_event_checkin AS fc
+ON fc.person_id = p.id
+JOIN income AS inc
+ON inc.ssn = p.ssn 
+WHERE gender = "female"
+AND hair_color = "red"
+AND height BETWEEN 65 AND 67
+AND car_model = "Model S"
+;  
+
+-- CHECK THE SOLUTION 
+
+INSERT INTO solution VALUES (1, 'Miranda Priestly');
+        
+        SELECT value FROM solution;
