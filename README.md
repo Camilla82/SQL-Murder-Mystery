@@ -1,7 +1,9 @@
 # SQL-Murder-Mystery
 My solution to the SQL Murder Mystery by NUKnightLab 
-https://mystery.knightlab.com/
-https://github.com/NUKnightLab/sql-mysteries
+
+> https://mystery.knightlab.com/
+>
+> https://github.com/NUKnightLab/sql-mysteries
 
 ## Task
 
