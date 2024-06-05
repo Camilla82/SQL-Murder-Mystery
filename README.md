@@ -37,8 +37,10 @@ SELECT sql
 
 ## My solution
 
-Considering the info I have been given ("crime was a ​murder​ that occurred sometime on ​Jan.15, 2018​ and that it took place in ​SQL City), I will start by interrogating the database 
-about the murder report: 
+### Murder report 
+
+Considering the information I have been given by the challenge (*crime was a ​murder​ that occurred sometime on ​Jan.15, 2018​ and that it took place in ​SQL City* ), I will start by interrogating the database about the **murder report**: 
+
 
 ``` sql
 SELECT * 
@@ -49,7 +51,42 @@ AND date = '20180115'
 ;
 
 ```
+![[Pasted image 20240605112703.png]]
 
+We found out that we have two witnesses:
+ 1) A man living **"on the last house on Northwestern Dr"**.
+ 2) A woman named **"Annabel"** living on **"Franklin Ave"**.
+
+### Find witnesses personal details
+
+#### First witness
+
+I want to find the info for the first witness' personal details. 
+I write a query to interrogate the **"person"** table for all entries associated to the **"Franklin Ave"** address and I order them by their address number (descendant order) so to find the last number associated for that specific address. I then put the limit to one result.  
+
+``` sql
+SELECT * 
+FROM person
+WHERE address_street_name = 'Northwestern Dr' 
+ORDER BY address_number DESC
+limit 1
+;
+```
+
+The name of the person living on the last house on Northwestern Dr is **"Morty Schapiro"**
+
+#### Second witness
+
+I then want to find the second witness' personal idetails.
+I write a query to interrogate the **"person"** table for all names like **"Annabel"** associated to the **"Franklin Ave"** address. 
+
+``` sql
+SELECT*
+FROM person
+WHERE name LIKE "Annabel%"
+AND address_street_name = "Franklin Ave"
+;
+```
 
 
 
