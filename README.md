@@ -92,8 +92,21 @@ AND address_street_name = "Franklin Ave"
 ![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/ec6fd277-2bda-4cd7-b6aa-6ae434db7fe7)
 
 
+### Witness interviews
+
+Now that I have both names, I want to query the database (interview table) and find out what the two witnesses said in their interviews. 
+I can use their **person_id** info gathered from the previous query to interrogate the **interview** table. 
 
 
+```sql
+SELECT*
+FROM interview
+WHERE person_id = 14887 -- witness 1
+OR person_id = 16371 -- witness 2
+;
+
+
+![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/977c00f1-d598-4693-ac48-e4b91cb59d12)
 
 
 
