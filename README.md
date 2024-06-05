@@ -17,6 +17,7 @@ The entity relationship diagram (ERD) showing the different tables in the databa
 ![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/bad1658e-d5be-4a5b-bf83-2392b419298f)
 
 
+The challenge also suggests you start with these two queries (see below): 
 
 ### Exploring Database structure
 
@@ -34,4 +35,4 @@ SELECT sql
 ```
 
 
-## Solution
+## My solution
