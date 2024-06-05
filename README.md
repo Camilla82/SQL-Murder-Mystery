@@ -7,7 +7,8 @@ A crime has taken place on SQL City and the detective needs your help. The detec
 Start by retrieving the corresponding crime scene report from the police department’s database.
 
 ## Exploring Database structure
-### Finding the schema Tables
+
+### Check the different tables names for the dataset
 
 ``` sql
 SELECT name 
@@ -15,11 +16,11 @@ SELECT name
  where type = 'table'
 ```
 
-### Example of structure for the crim_scene_report table
+### Table structure example
  ```sql
 SELECT sql 
   FROM sqlite_master
  where name = 'crime_scene_report'
 ```
 #### Schema
-https://github.com/NUKnightLab/sql-mysteries/blob/master/schema.png 
+Please refer to: https://github.com/NUKnightLab/sql-mysteries/blob/master/schema.png 
