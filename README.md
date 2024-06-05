@@ -147,3 +147,12 @@ OR name LIKE "Jeremy%"
 ;
 
 ```
+![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/94e2217f-9ff9-4be1-a980-6c568f3e0474)
+
+Annabel and Jeremy checked out at the same time (5:00 pm) and this put Jeremy at the crime scene at the time of the murder.
+
+Jeremy Bowers is indeed the murderer! 
+
+![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/02bb4958-d616-4890-99d5-4f779236d832)
+
+
