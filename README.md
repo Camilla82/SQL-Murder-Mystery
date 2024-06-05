@@ -11,6 +11,7 @@ https://github.com/NUKnightLab/sql-mysteries
 
 
 The entity relationship diagram (ERD) showing the different tables in the database and the relationship between them is also provided by the challenge (see below):
+
 ![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/bad1658e-d5be-4a5b-bf83-2392b419298f)
 
 
