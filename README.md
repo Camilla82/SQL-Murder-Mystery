@@ -22,5 +22,7 @@ SELECT sql
   FROM sqlite_master
  where name = 'crime_scene_report'
 ```
-#### Schema
+### Schema
 Please refer to: https://github.com/NUKnightLab/sql-mysteries/blob/master/schema.png 
+
+## Solution
