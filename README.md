@@ -51,7 +51,10 @@ AND date = '20180115'
 ;
 
 ```
-![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/855f4e39-dced-4cce-b651-4fe50b735166)
+| DATE   | TYPE                                                                                                                                                                                      | DESCRIPTION | CITY |
+| -------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| 20180115         | murder       | Security footage shows that there were 2 witnesses. The first witness lives at the last house on "Northwestern Dr". The second witness, named Annabel, lives somewhere on "Franklin Ave".                                                                                                                                                                                          | SQL City         |
+
 
 
 We found out that we have two witnesses:
