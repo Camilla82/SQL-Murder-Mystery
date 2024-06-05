@@ -108,6 +108,19 @@ OR person_id = 16371 -- witness 2
 
 ![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/ff11e522-bec2-4857-b13c-5181677da76e)
 
+### Find your suspect
+
+We now know that both witnesses saw one man running away from the murder scene. 
+We also know that:
+-  This man had a "**Get Fit Now Gym**" bag. 
+-  The number on the bag started with a "**48Z**".
+-  Only gold members carry those bags.
+-  The man's plate included "**H42W**".
+
+To find a potential suspect, we need to gather all the new info from the witnesses' interviews and cross-reference them in the same table. I will create a new table by joining data in tables person(id), get_fit_now_member (membership_status) and drivers_license tables (plate_number).
+I also want to simplify the names, so I will use **ALIAS** in some cases. 
+
+![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/8e2bc6a7-0054-470f-b472-f1eb61ee14a4)
 
 
 
