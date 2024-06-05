@@ -174,12 +174,14 @@ WHERE
 
 ```
 
+![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/486a4140-f00d-4420-9880-7fe3aa87cb9a)
+
 
 By reading Jeremy's statement, a woman hired Jeremy to commit the murder in her place that day.
 
 Jeremy says that: 
 - He was hired by a **woman with a lot of money**. He doesn't know her name.
-- He knows she's around **5'5" (65") or 5'7" (67")**. She has **red hair** and she drives a **Tesla Model S**. 
+- He knows she's around **5'5" (65") or 5'7" (67")**. She has **red hair** and she drives a **Tesla Model S**.
 -  He knows that she **attended the SQL Symphony Concert 3 times in December 2017**.
 
 I then join together several tables (drivers_license, person, facebook_event_checkin, income) to check all the info (in bold) from Jeremy's interview and find out the real culprit. 
@@ -201,5 +203,7 @@ AND car_model = "Model S"
 ;  
 
 ```
+
+![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/18e7e716-ac90-4920-b5b1-fd35b05f8280)
 
 The woman behind the murder is **Miranda Priestly**!!
