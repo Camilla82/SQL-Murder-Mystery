@@ -51,7 +51,8 @@ AND date = '20180115'
 ;
 
 ```
-![[Pasted image 20240605112703.png]]
+![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/855f4e39-dced-4cce-b651-4fe50b735166)
+
 
 We found out that we have two witnesses:
  1) A man living **"on the last house on Northwestern Dr"**.
@@ -87,6 +88,7 @@ WHERE name LIKE "Annabel%"
 AND address_street_name = "Franklin Ave"
 ;
 ```
+
 
 
 
