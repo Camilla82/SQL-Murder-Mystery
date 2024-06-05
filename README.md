@@ -76,7 +76,11 @@ ORDER BY address_number DESC
 limit 1
 ;
 ```
-![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/670e12c8-8505-443b-b9af-6293ba70a12b)
+
+| ID             | NAME       | LICENCE_ID     | ADDRESS_NUMBER      | ADDRESS_STREET_NAME | SSN |
+| ----- | -------------- | ---------- | -------------- | ------------------- | --------- |
+| 14887      | Morty Schapiro               | 118009               | 4919                         | Northwestern Dr                        | 111564949          |
+
 
 The name of the person living on the last house on Northwestern Dr is **"Morty Schapiro"**
 
@@ -92,7 +96,10 @@ WHERE name LIKE "Annabel%"
 AND address_street_name = "Franklin Ave"
 ;
 ```
-![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/ec6fd277-2bda-4cd7-b6aa-6ae434db7fe7)
+
+| ID             | NAME       | LICENCE_ID     | ADDRESS_NUMBER      | ADDRESS_STREET_NAME | SSN |
+| ----- | -------------- | ---------- | -------------- | ------------------- | --------- |
+| 16371      | Annabel Miller               | 490173               | 103                          | Franklin Ave                           | 318771143          |
 
 
 ### Witness interviews
@@ -109,7 +116,11 @@ OR person_id = 16371 -- witness 2
 ;
 ```
 
-![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/ff11e522-bec2-4857-b13c-5181677da76e)
+| PERSON_ID                                                                                                                                                                                                                       | TRANSCRIPT |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 14887              | I heard a gunshot and then saw a man run out. He had a "Get Fit Now Gym" bag. The membership number on the bag started with "48Z". Only gold members have those bags. The man got into a car with a plate that included "H42W".                                                                                                                                                                                                                                |
+| 16371              | I saw the murder happen, and I recognized the killer from my gym when I was working out last week on January the 9th.                                                                                                                                                                                                                                                                                                                                          |
+
 
 ### Find your suspect
 
@@ -124,13 +135,25 @@ We also know that:
 To find a potential suspect, we need to gather all the new info from the witnesses' interviews and cross-reference them in the same table. I will create a new table by joining data in tables person(id), get_fit_now_member (membership_status) and drivers_license tables (plate_number).
 I also want to simplify the names, so I will use **ALIAS** in some cases. 
 
-![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/8e2bc6a7-0054-470f-b472-f1eb61ee14a4)
+```sql 
 
-### Finding the killer!
+SELECT person.id, gfnm.name, person.license_id, gfnm.membership_status, dl.plate_number 
+FROM person
+JOIN get_fit_now_member AS gfnm
+ON  person.id = gfnm.person_id
+JOIN drivers_license as dl
+ON person.license_id = dl.id 
+WHERE gfnm.membership_status = "gold"
+AND gfnm.id LIKE "48Z%"
+AND dl.plate_number LIKE "%H42W%"
+;
 
-We know that a man named Jeremy Bowers could be our culprit, but to be sure we need to prove he was on the crime scene at the time of the murder.
+```
 
-To do this, we compare the gym check-in and check-out times of our suspect with Annabel Miller for the day of the murder (9th of January 2018) and see if they are compatible: Annabel and the suspect were both at the same gym the day of the murder).
+| ID            | NAME       | LICENCE_ID        | MEMBERSHIP_STATUS | PLATE_NUMBER |
+| ----- | ------------- | ---------- | ----------------- | ------------ |
+| 67318      | Jeremy Bowers              | 423327               | gold                               | 0H42W2                   |
+
 
 ### Finding the killer!
 
@@ -150,7 +173,11 @@ OR name LIKE "Jeremy%"
 ;
 
 ```
-![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/94e2217f-9ff9-4be1-a980-6c568f3e0474)
+
+| CHECK_IN_TIME  | CHECK_OUT_TIME | NAME |
+| ------------- | -------------- | -------------- |
+| 1530                       | 1700                         | Jeremy Bowers                |
+| 1600                       | 1700                         | Annabel Miller               |
 
 Annabel and Jeremy checked out at the same time (5:00 pm) and this put Jeremy at the crime scene at the time of the murder.
 
@@ -177,7 +204,9 @@ WHERE
 
 ```
 
-![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/486a4140-f00d-4420-9880-7fe3aa87cb9a)
+| PERSON_ID                                                                                                                                                                                                                                        | TRANSCRIPT | ID            | NAME |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----- | ------------- |
+| 67318              | I was hired by a woman with a lot of money. I don't know her name but I know she's around 5'5" (65") or 5'7" (67"). She has red hair and she drives a Tesla Model S. I know that she attended the SQL Symphony Concert 3 times in December 2017.                                                                                                                                                                                                                                                 | 67318      | Jeremy Bowers              |
 
 
 By reading Jeremy's statement, a woman hired Jeremy to commit the murder in her place that day.
@@ -207,6 +236,11 @@ AND car_model = "Model S"
 
 ```
 
-![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/18e7e716-ac90-4920-b5b1-fd35b05f8280)
+| ID     | HEIGHT     | HAIR_COLOR | GENDER    | CAR_MODEL            | EVENT_NAME | DATE             | NAME          | ANNUAL INCOME |
+| ------- | ------ | ---------- | ------ | --------- | -------------------- | -------- | ---------------- | ------------- |
+| 202298	        | 66           | red                  | female       | Model S            | SQL Symphony Concert                     | 20171206         | Miranda Priestly                 | 310000                     |
+| 202298	        | 66           | red                  | female       | Model S            | SQL Symphony Concert                     | 20171212         | Miranda Priestly                 | 310000                     |
+| 202298	        | 66           | red                  | female       | Model S            | SQL Symphony Concert                     | 20171212         | Miranda Priestly                 | 310000                     |
+
 
 The woman behind the murder is **Miranda Priestly**!!
