@@ -153,6 +153,53 @@ Annabel and Jeremy checked out at the same time (5:00 pm) and this put Jeremy at
 
 Jeremy Bowers is indeed the murderer! 
 
-![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/02bb4958-d616-4890-99d5-4f779236d832)
+![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/7585a70d-a35f-4103-b82d-8525e0119ce5)
 
 
+### One step further... to find the REAL culprit. 
+
+We want to read Jeremy's statement, to find out if there is more to this case. 
+
+To make this easier, I join the **interview** table and the **person** table together.
+
+```sql
+
+SELECT person_id, transcript, id, name
+FROM interview
+JOIN person 
+ ON interview.person_id = person.id
+WHERE  
+ name LIKE "Jeremy Bowers"
+;  
+
+```
+
+
+By reading Jeremy's statement, a woman hired Jeremy to commit the murder in her place that day.
+
+Jeremy says that: 
+- He was hired by a **woman with a lot of money**. He doesn't know her name.
+- He knows she's around **5'5" (65") or 5'7" (67")**. She has **red hair** and she drives a **Tesla Model S**. 
+-  He knows that she **attended the SQL Symphony Concert 3 times in December 2017**.
+
+I then join together several tables (drivers_license, person, facebook_event_checkin, income) to check all the info (in bold) from Jeremy's interview and find out the real culprit. 
+
+```sql
+
+SELECT dl.id, height, hair_color, gender, car_model, event_name, fc.date, p.name, p.ssn, annual_income
+FROM drivers_license AS dl
+JOIN person AS p
+ON p.license_id = dl.id
+JOIN facebook_event_checkin AS fc
+ON fc.person_id = p.id
+JOIN income AS inc
+ON inc.ssn = p.ssn 
+WHERE gender = "female"
+AND hair_color = "red"
+AND height BETWEEN 65 AND 67
+AND car_model = "Model S"
+;  
+
+```
+
+The woman behind the murder is **Miranda Priestly**!!
