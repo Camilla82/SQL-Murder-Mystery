@@ -104,6 +104,7 @@ FROM interview
 WHERE person_id = 14887 -- witness 1
 OR person_id = 16371 -- witness 2
 ;
+```
 
 ![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/ff11e522-bec2-4857-b13c-5181677da76e)
 
