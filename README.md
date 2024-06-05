@@ -123,6 +123,27 @@ I also want to simplify the names, so I will use **ALIAS** in some cases.
 
 ![image](https://github.com/Camilla82/SQL-Murder-Mystery/assets/126681504/8e2bc6a7-0054-470f-b472-f1eb61ee14a4)
 
+### Finding the killer!
 
+We know that a man named Jeremy Bowers could be our culprit, but to be sure we need to prove he was on the crime scene at the time of the murder.
 
+To do this, we compare the gym check-in and check-out times of our suspect with Annabel Miller for the day of the murder (9th of January 2018) and see if they are compatible: Annabel and the suspect were both at the same gym the day of the murder).
 
+### Finding the killer!
+
+We know that a man named Jeremy Bowers could be our culprit, but to be sure we need to prove he was on the crime scene at the time of the murder.
+
+To do this, we compare the gym check-in and check-out times of our suspect with Annabel Miller for the day of the murder (9th of January 2018) and see if they are compatible: Annabel and the suspect were both at the same gym the day of the murder).
+
+```sql 
+
+SELECT check_in_time, check_out_time, name
+FROM get_fit_now_check_in AS gfnc
+JOIN get_fit_now_member AS gfnm
+ON gfnm.id = gfnc.membership_id
+WHERE  check_in_date = '20180109'
+AND name LIKE "Annabel%" 
+OR name LIKE "Jeremy%"
+;
+
+```
